@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
+using Unity.VisualScripting;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     private Rigidbody2D rb;
     float vertical;
     float horizontal;
     Vector2 moveDirection;
+    
 
     public float moveSpeed;
 
@@ -28,5 +31,19 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        if(base.IsOwner)
+        {
+
+        }
+        else
+        {
+            gameObject.GetComponent<PlayerMovement>().enabled = false;
+        }
     }
 }

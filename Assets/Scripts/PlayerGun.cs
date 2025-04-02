@@ -1,9 +1,8 @@
-using System;
+using FishNet.Object;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGun : MonoBehaviour
+public class PlayerGun : NetworkBehaviour
 {
     public GunType defaultGun;
     public Bullet bullet;
@@ -89,6 +88,19 @@ public class PlayerGun : MonoBehaviour
         yield return new WaitForSeconds(gun.fireDelay);
         canShoot = true;
     }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if(base.IsOwner)
+        {
+
+        }
+        else
+        {
+            gameObject.GetComponent<PlayerGun>().enabled = false;
+        }
+    }
 }
 
 public class GunType
@@ -114,3 +126,5 @@ public class GunType
         this.gunSprite = gunSprite;
     }
 }
+
+
