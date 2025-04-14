@@ -13,11 +13,5 @@ public class PlayerSetup : MonoBehaviour
         _camera = Camera.main;
         _camera.gameObject.SetActive(true);
 
-    public GameObject Camera;
-    public void IsLocalPlayer()
-    {
-        movement.enabled = true;
-        Camera.SetActive(true);
     }
-
 }
