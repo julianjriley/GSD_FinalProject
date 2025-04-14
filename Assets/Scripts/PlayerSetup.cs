@@ -11,7 +11,6 @@ public class PlayerSetup : MonoBehaviour
     Camera _camera;
     public void IsLocalPlayer()
     {
-        playerAiming = GetComponent<PlayerGun>();
         playerAiming.enabled = true;
         movement.enabled = true;
         _camera = Camera.main;
