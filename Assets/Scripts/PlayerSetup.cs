@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSetup : MonoBehaviour
 {
     public PlayerMovement movement;
-    PlayerGun playerAiming;
+    [SerializeField] PlayerGun playerAiming;
     
 
     Camera _camera;
