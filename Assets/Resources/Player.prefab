@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 5235773191626733874}
+  playerAiming: {fileID: 4979980157183760345}
 --- !u!1 &5022668181930041415
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +279,8 @@ GameObject:
   m_Component:
   - component: {fileID: 538667499080294531}
   - component: {fileID: 4979980157183760345}
+  - component: {fileID: 8980781278768709895}
+  - component: {fileID: 2137940838339668442}
   m_Layer: 0
   m_Name: Gun Pivot
   m_TagString: Untagged
@@ -308,7 +311,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5022668181930041415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09beefd25ef88644bbea960b49dab1a9, type: 3}
   m_Name: 
@@ -324,6 +327,45 @@ MonoBehaviour:
   defaultBulletSpreadDegrees: 0
   defaultBulletVelocity: 20
   defaultGunSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &8980781278768709895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022668181930041415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2137940838339668442}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2137940838339668442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022668181930041415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6434028569111465482
 GameObject:
   m_ObjectHideFlags: 0
