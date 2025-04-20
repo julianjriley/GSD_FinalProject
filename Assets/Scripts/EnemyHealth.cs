@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
+    public int bounty;
+    public static event Action<int> OnEnemyDeath;
     PhotonView pv;
     private void OnEnable()
     {
@@ -19,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
+                OnEnemyDeath.Invoke(bounty);
                 PhotonNetwork.Destroy(gameObject);
             }
         }
