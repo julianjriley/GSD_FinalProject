@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static event Action<float> HealthChanged;
+
     public float maxHealth = 5;
     float health;
 

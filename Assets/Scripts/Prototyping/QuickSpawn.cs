@@ -10,6 +10,7 @@ public class QuickSpawn : MonoBehaviourPunCallbacks
     bool startedSpawning = false;
 
     [SerializeField] Transform[] spawnPoints;
+    [SerializeField] string[] enemyPrefabs;
 
     private void Start()
     {
@@ -45,7 +46,8 @@ public class QuickSpawn : MonoBehaviourPunCallbacks
             //PhotonNetwork.Instantiate("EnemyJulian", spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, Quaternion.identity);
             yield return new WaitForSeconds(6f);
         }
-        
+        //enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)]
+
     }
 
 

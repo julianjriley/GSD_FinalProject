@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1068371047276424611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4679172184520271708}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4679172184520271708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068371047276424611}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.583, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4303847722768488514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8317151155428701198
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303847722768488514}
   - component: {fileID: 7648986568272596815}
-  - component: {fileID: 1475370338406032388}
+  - component: {fileID: -5835031449450961098}
   - component: {fileID: 6622883000538103290}
   - component: {fileID: 299078584010782759}
   - component: {fileID: 2683930870709543320}
@@ -18,7 +49,7 @@ GameObject:
   - component: {fileID: 6958344894295603323}
   - component: {fileID: 9210550562746068033}
   m_Layer: 0
-  m_Name: EnemyJulian
+  m_Name: EnemyJulian2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +67,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4679172184520271708}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7648986568272596815
@@ -91,7 +123,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1475370338406032388
+--- !u!114 &-5835031449450961098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,11 +132,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8317151155428701198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6874e32b0ffbc46ac7eb193bc3bb32, type: 3}
+  m_Script: {fileID: 11500000, guid: b3c948182943c294885cc4f9b447dce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 1985040627863693487, guid: 9b22921535c7d284a8ea4e9f32d6ad56, type: 3}
+  spawnPoint: {fileID: 1068371047276424611}
   moveSpeed: 2.5
-  contactDPS: 0.4
+  turnSpeed: 2
+  range: 10
+  isMoving: 1
 --- !u!114 &6622883000538103290
 MonoBehaviour:
   m_ObjectHideFlags: 0

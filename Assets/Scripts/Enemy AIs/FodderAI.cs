@@ -26,7 +26,6 @@ public class FodderAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
 
-        rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("FindNewPlayers", 0.1f, 5f);
     }
 

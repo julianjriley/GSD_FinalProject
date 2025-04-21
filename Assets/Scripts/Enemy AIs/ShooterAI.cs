@@ -17,15 +17,27 @@ public class ShooterAI : MonoBehaviour
     Rigidbody2D rb;
     CircleCollider2D circleCollider;
 
+    /*
     private void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
+    */
+
+    private void OnEnable()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
+
+        InvokeRepeating("FindNewPlayers", 0.1f, 5f);
+    }
 
     private void Update()
     {
+        
         float minDistance = float.MaxValue;
         GameObject closestPlayer = null;
         foreach (var player in players)
@@ -62,5 +74,10 @@ public class ShooterAI : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, angleDeg, turnSpeed * Time.time)); 
 
+    }
+
+    void FindNewPlayers()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 }
