@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Photon.Pun;
 using UnityEngine;
 
-public class GunPickup : MonoBehaviour
+public class GunPickup : MonoBehaviourPun
 {
+
+    public static event Action<string> NearWeapon;
+    public static event Action LeaveWeapon;
+
+
     [Tooltip("The damage each bullet does.")]
     public float defaultDamage = 1f;
 
@@ -28,6 +36,15 @@ public class GunPickup : MonoBehaviour
     [Tooltip("The image used to represent the gun.")]
     public Sprite defaultGunSprite;
 
+    [Tooltip("Name of weapon")]
+    public string gunName;
+
+    [Tooltip("How much this weapon costs")]
+    public int gunValue;
+
+    [Tooltip("The text showing the gun's price")]
+    public TextMeshProUGUI gunPriceText;
+
     GunType gun;
     PlayerGun playerGun;
 
@@ -38,13 +55,41 @@ public class GunPickup : MonoBehaviour
         SpriteRenderer gunRenderer;
         gunRenderer = gameObject.GetComponent<SpriteRenderer>();
         gunRenderer.sprite = defaultGunSprite;
+        gunPriceText.text = "$" + gunValue;
     }
 
+    public void NetworkDestory()
+    {
+        photonView.RPC("NetworkDestroyInternal", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void NetworkDestroyInternal()
+    {
+        PhotonNetwork.Destroy(gameObject);
+    }
+
+    public GunType Gun { get { return gun; } }
+
+    
+    /*
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-            playerGun.SetGun(gun);
+            NearWeapon.Invoke(gunName);
+            col.gameObject.GetComponent<PlayerMovement>().SetClosestGun(this);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            LeaveWeapon.Invoke();
+            other.gameObject.GetComponent<PlayerMovement>().SetClosestGun(null)()
+        }
+    }
+    */
+
 }
