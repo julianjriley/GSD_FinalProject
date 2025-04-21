@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +22,9 @@ public class PlayerHealth : MonoBehaviour
         if (health < 0 )
         {
             //TODO: What happens when the player dies
+            PhotonNetwork.Disconnect();
         }
+        HealthChanged.Invoke( health/maxHealth );
         Debug.Log(health);
     }
 }
