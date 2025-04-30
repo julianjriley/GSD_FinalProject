@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class FodderAI : MonoBehaviour
@@ -8,21 +11,31 @@ public class FodderAI : MonoBehaviour
     Vector2 moveDirection;
     Rigidbody2D rb;
     CircleCollider2D circleCollider;
+    bool playerSpawned = false;
 
     public float moveSpeed = 2.5f;
     public float contactDPS = 0.1f;
 
     private void Start()
     {
+    }
+
+    private void OnEnable()
+    {
         players = GameObject.FindGameObjectsWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+
+        InvokeRepeating("FindNewPlayers", 0.1f, 5f);
     }
+
+
 
     private void Update()
     {
         //Move towards the closest player.
         //This seems like a dumb way to do this, but Google isn't giving me a better one so... Too bad!
+
         float minDistance = float.MaxValue;
         GameObject closestPlayer = null;
         foreach (var player in players)
@@ -49,5 +62,10 @@ public class FodderAI : MonoBehaviour
         {
             ph.TakeDamage(contactDPS * Time.deltaTime);
         }
+    }
+
+    void FindNewPlayers()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 }

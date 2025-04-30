@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerGun : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerGun : MonoBehaviour
     public Bullet bullet;
     public GameObject spawnPoint;
     public SpriteRenderer gunImage;
+    PhotonView pv;
 
     [Tooltip("The damage each bullet does.")]
     public float defaultDamage = 1f;
@@ -39,6 +41,7 @@ public class PlayerGun : MonoBehaviour
     private void Start()
     {
         defaultGun = new GunType(defaultDamage, defaultFireDelay, defaultBurstCount, defaultBurstShotTime, defaultBulletCount, defaultBulletSpreadDegrees, defaultBulletVelocity, defaultGunSprite);
+        pv = GetComponent<PhotonView>();    
     }
 
 
@@ -80,7 +83,8 @@ public class PlayerGun : MonoBehaviour
         {
             for (int j = 0; j < gun.bulletCount; j++)
             {
-                Bullet firedBullet = Instantiate(bullet, spawnPoint.transform.position, gameObject.transform.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range(-1*gun.bulletSpreadDegrees, gun.bulletSpreadDegrees)));
+                GameObject bulletGO = PhotonNetwork.Instantiate("PlayerBullet", spawnPoint.transform.position, gameObject.transform.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range(-1*gun.bulletSpreadDegrees, gun.bulletSpreadDegrees)));
+                Bullet firedBullet = bulletGO.GetComponent<Bullet>();
                 firedBullet.speed = gun.bulletVelocity;
                 firedBullet.damage = gun.damage;
             }
@@ -102,6 +106,7 @@ public class GunType
     public float bulletVelocity;
     public Sprite gunSprite;
 
+
     public GunType(float damage, float fireDelay, int burstCount, float burstShotTime, int bulletCount, float bulletSpreadDegrees, float bulletVelocity, Sprite gunSprite)
     {
         this.damage = damage;
@@ -113,4 +118,6 @@ public class GunType
         this.bulletVelocity = bulletVelocity;
         this.gunSprite = gunSprite;
     }
+
+
 }
