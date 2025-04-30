@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamage: 0.7
-  defaultFireDelay: 0.15
+  defaultFireDelay: 0.05
   defaultBurstCount: 1
   defaultBurstShotTime: 0
   defaultBulletCount: 1
