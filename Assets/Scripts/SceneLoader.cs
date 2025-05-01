@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadSceneByName()
     {
-        SceneManager.LoadScene("SceneNameHere");
+        SceneManager.LoadScene("JulianScene");
     }
 
     public void QuitGame()

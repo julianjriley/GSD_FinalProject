@@ -35,6 +35,6 @@ public class PlayerHealth : MonoBehaviour
             PhotonNetwork.Disconnect();
         }
         HealthChanged.Invoke( health/maxHealth );
-        Debug.Log(health);
+        //Debug.Log(health);
     }
 }
