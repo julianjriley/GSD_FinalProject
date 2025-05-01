@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  bounty: 0
+  bounty: 8
 --- !u!58 &1673894137865201123
 CircleCollider2D:
   m_ObjectHideFlags: 0
