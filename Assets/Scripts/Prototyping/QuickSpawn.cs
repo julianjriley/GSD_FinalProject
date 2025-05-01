@@ -40,7 +40,7 @@ public class QuickSpawn : MonoBehaviourPunCallbacks
             {
                 int randomIndex = availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count - 1)];
                 availableSpawnPoints.Remove(randomIndex);
-                PhotonNetwork.InstantiateRoomObject("EnemyJulian", spawnPoints[randomIndex].position, Quaternion.identity);
+                PhotonNetwork.InstantiateRoomObject(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoints[randomIndex].position, Quaternion.identity);
             }
             //PhotonNetwork.Instantiate("EnemyJulian", spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, Quaternion.identity);
             //PhotonNetwork.Instantiate("EnemyJulian", spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, Quaternion.identity);

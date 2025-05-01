@@ -28,7 +28,7 @@ public class EnemyBullet : MonoBehaviour
         PlayerHealth player;
         if (col.gameObject.TryGetComponent<PlayerHealth>(out player))
         {
-            col.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
+            player.TakeDamage(damage);
             //enemy.TakeDamage(damage);
         }
         PhotonNetwork.Destroy(gameObject);

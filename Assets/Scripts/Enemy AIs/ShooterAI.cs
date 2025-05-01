@@ -92,7 +92,7 @@ public class ShooterAI : MonoBehaviour
     IEnumerator Shoot()
     {
         canFire = false;
-        Instantiate(bullet, spawnPoint.transform.position, gameObject.transform.rotation);
+        PhotonNetwork.Instantiate("EnemyBullet", spawnPoint.transform.position, gameObject.transform.rotation);
         yield return new WaitForSeconds(fireDelay);
         canFire = true;
     }
